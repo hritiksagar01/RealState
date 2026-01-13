@@ -29,6 +29,28 @@ if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 'loopback');
 }
 
+// ✅ CORS Configuration - MUST BE FIRST before other middlewares
+app.use(cors({
+  origin: [
+    'http://localhost:4000',
+    'http://localhost:5174',
+    'http://localhost:5173',
+    'https://buildestate.vercel.app',
+    'https://real-estate-website-admin.onrender.com',
+    'https://real-estate-website-backend-zfu7.onrender.com',
+    'https://pllatinum.me',
+    'https://www.pllatinum.me',
+    'https://admin.pllatinum.me',
+    'https://api.pllatinum.me',
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'token', 'X-Requested-With'],
+}));
+
+// Handle preflight requests
+app.options('*', cors());
+
 // Enhanced rate limiting configuration
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -74,25 +96,6 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(trackAPIStats);
 
-
-// CORS Configuration
-app.use(cors({
-  origin: [
-    'http://localhost:4000',
-    'http://localhost:5174',
-    'http://localhost:5173',
-    'https://buildestate.vercel.app',
-    'https://real-estate-website-admin.onrender.com',
-    'https://real-estate-website-backend-zfu7.onrender.com',
-    'https://pllatinum.me',
-    'https://www.pllatinum.me',
-    'https://admin.pllatinum.me',
-    'https://api.pllatinum.me',
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'], // Added HEAD
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-}));
 
 // Database connection
 connectdb().then(() => {

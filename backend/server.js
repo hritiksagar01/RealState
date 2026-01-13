@@ -84,6 +84,10 @@ app.use(cors({
     'https://buildestate.vercel.app',
     'https://real-estate-website-admin.onrender.com',
     'https://real-estate-website-backend-zfu7.onrender.com',
+    'https://pllatinum.me',
+    'https://www.pllatinum.me',
+    'https://admin.pllatinum.me',
+    'https://api.pllatinum.me',
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'], // Added HEAD

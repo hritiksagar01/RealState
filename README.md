@@ -1089,4 +1089,5 @@ This project is licensed under the **MIT License**
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&pause=1000&color=888888&center=true&vCenter=true&width=600&lines=Built+with+❤️+for+the+real+estate+industry;Happy+coding!+🎉" alt="Footer Message">
 </p>
 
-</div>
+</div>#   R e a l S t a t e  
+ 

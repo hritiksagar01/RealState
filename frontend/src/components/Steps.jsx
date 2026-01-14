@@ -200,7 +200,7 @@ export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(null);
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-white via-blue-50/30 to-indigo-50/30 overflow-hidden">
+    <section className="relative py-3 bg-gradient-to-b from-white via-blue-50/30 to-indigo-50/30 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
@@ -415,60 +415,7 @@ export default function HowItWorks() {
         </motion.div>
         
         {/* Enhanced Testimonial with modern design */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-24 max-w-4xl mx-auto"
-        >
-          <div className="relative bg-gradient-to-br from-white/80 to-blue-50/80 backdrop-blur-sm 
-            p-10 rounded-3xl shadow-2xl border border-white/20 text-center overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-0 w-full h-full">
-              <div className="absolute top-4 left-4 w-8 h-8 bg-blue-200/30 rounded-full"></div>
-              <div className="absolute bottom-4 right-4 w-12 h-12 bg-indigo-200/30 rounded-full"></div>
-              <div className="absolute top-1/2 right-8 w-6 h-6 bg-purple-200/30 rounded-full"></div>
-            </div>
-            
-            {/* Quote */}
-            <motion.div
-              className="relative z-10"
-              animate={floatingAnimation}
-            >
-              <div className="text-6xl text-blue-600/20 font-serif leading-none">&ldquo;</div>
-              <p className="text-gray-700 italic text-xl lg:text-2xl mb-6 leading-relaxed -mt-4">
-                The 3-step process was incredibly smooth. Within a week, I found and secured my dream apartment!
-              </p>
-              
-              {/* Author info */}
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 
-                  rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  S
-                </div>
-                <div className="text-left">
-                  <p className="font-bold text-gray-900">Sarah Johnson</p>
-                  <p className="text-gray-600 text-sm">New York</p>
-                </div>
-              </div>
-              
-              {/* Stars */}
-              <div className="flex justify-center mt-4 gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1 + i * 0.1 }}
-                  >
-                    <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

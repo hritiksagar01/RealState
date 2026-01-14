@@ -349,18 +349,18 @@ const helpLinks = [
 const contactInfo = [
   { 
     icon: MapPin, 
-    text: '123 Property Plaza, Silicon Valley, CA 94088',
+    text: '1166/23/47/122 Prayagraj',
     href: 'https://maps.google.com/?q=123+Property+Plaza,Silicon+Valley,CA+94088' 
   },
   { 
     icon: Phone, 
-    text: '+1 (234) 567-890',
-    href: 'tel:+1234567890'
+    text: '+91 9125438567',
+    href: 'tel:+919125438567'
   },
   { 
     icon: Mail, 
-    text: 'support@buildestate.com',
-    href: 'mailto:support@buildestate.com' 
+    text: 'gopesh.srivastava01@gmail.com',
+    href: 'mailto:gopesh.srivastava01@gmail.com' 
   },
 ];
 

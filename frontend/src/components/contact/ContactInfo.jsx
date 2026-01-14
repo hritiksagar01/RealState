@@ -7,19 +7,19 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Phone',
-    content: '+1 (234) 567-890',
-    link: 'tel:+1234567890',
+    content: '+91 9415594051',
+    link: ' +91 9125438567',
   },
   {
     icon: Mail,
     title: 'Email',
-    content: 'support@buildestate.com',
-    link: 'mailto:support@buildestate.com',
+    content: 'gopesh.srivastava01@gmail.com',
+    link: 'mailto:gopesh.srivastava01@gmail.com',
   },
   {
     icon: MapPin,
     title: 'Address',
-    content: '123 Main Street, City, Country',
+    content: '1166/23/47/122C Prayagraj',
     link: '#map',
   },
   {

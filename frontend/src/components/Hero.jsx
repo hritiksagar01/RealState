@@ -21,8 +21,8 @@ const quickFilters = [
 ];
 
 const stats = [
-  { icon: Users, value: "50K+", label: "Happy Customers", color: "from-blue-500 to-cyan-500" },
-  { icon: Home, value: "25K+", label: "Properties Listed", color: "from-green-500 to-emerald-500" },
+  { icon: Users, value: "10+", label: "Happy Customers", color: "from-blue-500 to-cyan-500" },
+  { icon: Home, value: "25+", label: "Properties Listed", color: "from-green-500 to-emerald-500" },
   { icon: Star, value: "4.9", label: "Average Rating", color: "from-yellow-500 to-orange-500" },
   { icon: Shield, value: "100%", label: "Verified Properties", color: "from-purple-500 to-pink-500" }
 ];
@@ -172,24 +172,13 @@ const Hero = () => {
               className="text-center"
             >
               {/* Trust Badge */}
-              <motion.div 
-                variants={itemVariants}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-md text-blue-700 rounded-full text-sm font-semibold mb-8 shadow-lg border border-blue-100"
-              >
-                <Shield className="w-4 h-4" />
-                <span>Trusted by 50,000+ families</span>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-              </motion.div>
+          
 
               {/* Main Heading */}
               <motion.div variants={itemVariants} className="mb-8">
                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-[0.9]">
                   <RadialGradient
-                    gradient={["circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%"]}
+                    gradient={["circle, rgba(63,34,251,1) 0%, rgba(252,70,107,1) 100%"]}
                   >
                     Find Your Perfect
                   </RadialGradient>
@@ -201,10 +190,9 @@ const Hero = () => {
 
                 <motion.p 
                   variants={itemVariants}
-                  className="text-gray-700 text-xl sm:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
+                  className="text-gray-700 text-xl sm:text-2xl mb-13 max-w-3xl mx-auto leading-relaxed font-medium"
                 >
-                  Discover exceptional properties in prime locations with our 
-                  <span className="text-blue-600 font-semibold"> AI-powered search</span> and 
+                  Discover exceptional properties in prime locations with our       
                   <span className="text-purple-600 font-semibold"> expert guidance</span>
                 </motion.p>
               </motion.div>

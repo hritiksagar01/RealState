@@ -19,7 +19,15 @@ import getStatusPage from './serverweb.js';
 dotenv.config();
 
 const app = express();
+ // ✅ Create uploads directory if it doesn't exist
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const uploadsDir = path.join(__dirname, 'uploads');
 
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+  console.log('✅ Uploads directory created');
+}
 // Configure trust proxy for different environments
 if (process.env.NODE_ENV === 'production') {
   // Trust first proxy (Render, Heroku, etc.)

@@ -1,7 +1,7 @@
 import { Home, IndianRupee, Filter } from "lucide-react";
 import { motion } from "framer-motion";
 
-const propertyTypes = ["House", "Apartment", "Villa", "Office"];
+const propertyTypes = ["House", "Apartment", "Villa", "Office", "Agriculture Land", "Plot"];
 const availabilityTypes = ["Rent", "Buy", "Lease"];
 const priceRanges = [
   { min: 0, max: 5000000, label: "Under ₹50L" },

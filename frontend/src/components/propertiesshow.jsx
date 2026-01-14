@@ -193,7 +193,9 @@ const PropertiesShow = () => {
     { id: 'all', label: 'All Properties' },
     { id: 'apartment', label: 'Apartments' },
     { id: 'villa', label: 'Villas' },
-    { id: 'house', label: 'Houses' }
+    { id: 'house', label: 'Houses' },
+    { id: 'agriculture land', label: 'Agriculture Land' },
+    { id: 'plot', label: 'Plots' }
   ];
   
   const containerVariants = {

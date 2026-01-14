@@ -17,7 +17,8 @@ const quickFilters = [
   { label: "Apartments", icon: Home, count: "2.5k+" },
   { label: "Houses", icon: Home, count: "1.8k+" },
   { label: "Villas", icon: Home, count: "750+" },
-  { label: "Studios", icon: Home, count: "1.2k+" }
+  { label: "Agriculture Land", icon: Home, count: "500+" },
+  { label: "Plots", icon: Home, count: "800+" }
 ];
 
 const stats = [

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { backendurl } from '../config/constants';
 import { Upload, X } from 'lucide-react';
 
-const PROPERTY_TYPES = ['House', 'Apartment', 'Office', 'Villa'];
+const PROPERTY_TYPES = ['House', 'Apartment', 'Office', 'Villa', 'Agriculture Land', 'Plot'];
 const AVAILABILITY_TYPES = ['rent', 'buy'];
 
 const PropertyForm = () => {

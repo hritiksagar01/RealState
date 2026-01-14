@@ -49,6 +49,10 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  video: {
+    type: String,
+    default: null,
+  },
 });
 
 const Property = mongoose.model("Property", propertySchema);

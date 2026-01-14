@@ -1,32 +1,49 @@
-import fs from "fs";
 import imagekit from "../config/imagekit.js";
 import Property from "../models/propertymodel.js";
 
+// Helper function to upload buffer directly to ImageKit (images & videos)
+const uploadToImageKit = async (file) => {
+    const isVideo = file.mimetype.startsWith('video/');
+    const result = await imagekit.upload({
+        file: file.buffer.toString('base64'), // Convert buffer to base64
+        fileName: `${Date.now()}-${file.originalname.replace(/\s+/g, '-')}`,
+        folder: isVideo ? "Property/Videos" : "Property/Images",
+    });
+    return {
+        url: result.url,
+        type: isVideo ? 'video' : 'image',
+        fileId: result.fileId,
+    };
+};
+
 const addproperty = async (req, res) => {
     try {
-        const { title, location, price, beds, baths, sqft, type, availability, description, amenities,phone } = req.body;
+        const { title, location, price, beds, baths, sqft, type, availability, description, amenities, phone } = req.body;
 
         const image1 = req.files.image1 && req.files.image1[0];
         const image2 = req.files.image2 && req.files.image2[0];
         const image3 = req.files.image3 && req.files.image3[0];
         const image4 = req.files.image4 && req.files.image4[0];
+        const video = req.files.video && req.files.video[0];
 
         const images = [image1, image2, image3, image4].filter((item) => item !== undefined);
 
-        // Upload images to ImageKit and delete after upload
-        const imageUrls = await Promise.all(
+        // Upload images directly to ImageKit from memory buffer
+        const uploadedMedia = await Promise.all(
             images.map(async (item) => {
-                const result = await imagekit.upload({
-                    file: fs.readFileSync(item.path),
-                    fileName: item.originalname,
-                    folder: "Property",
-                });
-                fs.unlink(item.path, (err) => {
-                    if (err) console.log("Error deleting the file: ", err);
-                });
-                return result.url;
+                return await uploadToImageKit(item);
             })
         );
+
+        // Extract just the URLs for backward compatibility
+        const imageUrls = uploadedMedia.map(media => media.url);
+
+        // Upload video if provided
+        let videoUrl = null;
+        if (video) {
+            const uploadedVideo = await uploadToImageKit(video);
+            videoUrl = uploadedVideo.url;
+        }
 
         // Create a new product
         const product = new Property({
@@ -41,6 +58,7 @@ const addproperty = async (req, res) => {
             description,
             amenities,
             image: imageUrls,
+            video: videoUrl,
             phone
         });
 
@@ -109,23 +127,27 @@ const updateproperty = async (req, res) => {
         const image2 = req.files.image2 && req.files.image2[0];
         const image3 = req.files.image3 && req.files.image3[0];
         const image4 = req.files.image4 && req.files.image4[0];
+        const video = req.files.video && req.files.video[0];
 
         const images = [image1, image2, image3, image4].filter((item) => item !== undefined);
 
-        // Upload images to ImageKit and delete after upload
-        const imageUrls = await Promise.all(
-            images.map(async (item) => {
-                const result = await imagekit.upload({
-                    file: fs.readFileSync(item.path),
-                    fileName: item.originalname,
-                    folder: "Property",
-                });
-                fs.unlink(item.path, (err) => {
-                    if (err) console.log("Error deleting the file: ", err);
-                });
-                return result.url;
-            })
-        );
+        // Upload images directly to ImageKit from memory buffer
+        let imageUrls = property.image; // Keep existing images by default
+        if (images.length > 0) {
+            const uploadedMedia = await Promise.all(
+                images.map(async (item) => {
+                    return await uploadToImageKit(item);
+                })
+            );
+            imageUrls = uploadedMedia.map(media => media.url);
+        }
+
+        // Upload video if provided
+        let videoUrl = property.video; // Keep existing video by default
+        if (video) {
+            const uploadedVideo = await uploadToImageKit(video);
+            videoUrl = uploadedVideo.url;
+        }
 
         property.title = title;
         property.location = location;
@@ -138,6 +160,7 @@ const updateproperty = async (req, res) => {
         property.description = description;
         property.amenities = amenities;
         property.image = imageUrls;
+        property.video = videoUrl;
         property.phone = phone;
 
         await property.save();
